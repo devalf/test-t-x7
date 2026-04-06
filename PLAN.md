@@ -8,7 +8,7 @@
 | Database | SQLite via aiosqlite | Lightweight, persistent, async |
 | LLM | Claude (Anthropic SDK) | claude-sonnet-4-6 |
 | Frontend | Vite + React + TypeScript | Fast, minimal |
-| Styling | Tailwind CSS + shadcn/ui | Utility-first, accessible components |
+| Styling | MUI (Material UI v6) | Full component library, no extra CSS tooling |
 | Shared models | Pydantic → JSON Schema → TypeScript | Single source of truth |
 | Platform APIs | Fully mocked | Per TA guidance |
 | Monorepo | Root Makefile + root package.json | Single entry point for all commands |
@@ -653,23 +653,20 @@ Confidence score: simple heuristic (e.g., 0.9 for clear imbalance, 0.6 for borde
 ```bash
 # Run from project root (test-t-x7)
 yarn create vite frontend --template react-ts
-cd frontend
-yarn dlx shadcn@latest init
 ```
 
 ### 9.2 Install dependencies
 
 ```bash
-yarn add axios @tanstack/react-query
+yarn add axios @tanstack/react-query @mui/material @mui/icons-material @emotion/react @emotion/styled
 
-yarn add -D tailwindcss @tailwindcss/vite eslint @eslint/js typescript-eslint eslint-plugin-react-hooks prettier eslint-config-prettier eslint-plugin-prettier
+yarn add -D eslint @eslint/js typescript-eslint eslint-plugin-react-hooks prettier eslint-config-prettier eslint-plugin-prettier
 ```
 
-### 9.3 shadcn/ui components needed
+### 9.3 MUI components used
 
-```bash
-yarn dlx shadcn@latest add table button dialog input badge select card tooltip
-```
+No install step needed — all from `@mui/material`:
+`Table`, `Button`, `Dialog`, `TextField`, `Chip`, `Select`, `Card`, `Tooltip`, `CircularProgress`, `Alert`
 
 ### 9.4 Vite config — path alias for shared types
 
@@ -867,19 +864,19 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 
 ### CampaignTable (`components/Dashboard/CampaignTable.tsx`)
 
-shadcn `<Table>` with columns:
+MUI `<Table>` with columns:
 
 | Platform | Campaign Name | Type | Spend | Impressions | Clicks | CTR | Conv. Value |
 |---|---|---|---|---|---|---|---|
 
-- Platform shown as colored badge (Google=blue, Meta=indigo, Amazon=orange)
-- Status badge (Created / Pending / Failed) with color
+- Platform shown as MUI `<Chip>` (Google=blue, Meta=indigo, Amazon=orange)
+- Status `<Chip>` (Created=green, Pending=grey, Failed=red)
 - CTR formatted as percentage
 - Spend formatted as currency
 
 ### Filters (`components/Dashboard/Filters.tsx`)
 
-Two `<Select>` dropdowns: Platform filter, Campaign Type filter. State lifted to Dashboard.
+Two MUI `<Select>` dropdowns: Platform filter, Campaign Type filter. State lifted to Dashboard.
 
 ### Create Campaign Modal (`components/CreateCampaign/Modal.tsx`)
 
