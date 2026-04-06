@@ -38,9 +38,9 @@
 │   │   ├── campaign.py           ← ApiAdCampaign, ApiCreateCampaignRequest, ApiCampaignStatus
 │   │   └── metrics.py            ← ApiCampaignMetrics, ApiOptimizationSuggestion
 │   ├── types/                    ← AUTO-GENERATED TypeScript — do not edit manually
-│   │   ├── plan.ts
-│   │   ├── campaign.ts
-│   │   └── metrics.ts
+│   │   ├── plan.d.ts
+│   │   ├── campaign.d.ts
+│   │   └── metrics.d.ts
 │   └── scripts/
 │       └── generate_types.py     ← dumps JSON schemas → calls json-schema-to-typescript
 ├── backend/
@@ -284,7 +284,7 @@ Flow:
 1. Import each model module
 2. Build a `$defs`-style JSON schema per file using `model_json_schema()`
 3. Write to `shared/schemas/plan.json`, `campaign.json`, `metrics.json`
-4. `json2ts` CLI converts each to `shared/types/plan.ts` etc.
+4. `json2ts` CLI converts each to `shared/types/plan.d.ts` etc.
 5. Generated TS interfaces are named exactly as the Pydantic classes: `ApiMediaPlan`, `ApiAdCampaign`, etc.
 
 > Run: `make generate-types` — never edit `shared/types/` manually.

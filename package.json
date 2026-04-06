@@ -1,0 +1,13 @@
+{
+  "name": "adpilot",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"make backend\" \"make frontend\" --names backend,frontend",
+    "generate-types": "python3 shared/scripts/generate_types.py && yarn ts-gen",
+    "ts-gen": "json2ts -i shared/schemas -o shared/types --unreachableDefinitions"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.0",
+    "json-schema-to-typescript": "^15.0.0"
+  }
+}
