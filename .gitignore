@@ -32,3 +32,5 @@ shared/schemas/
 # OS
 .DS_Store
 /.vscode/
+
+dev

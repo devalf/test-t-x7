@@ -5,6 +5,7 @@ setup: install db-init generate-types
 install:
 	cd backend && python3 -m venv .venv && .venv/bin/pip install -e ".[dev]"
 	yarn install
+	cd frontend && yarn install
 
 dev:
 	yarn dev
