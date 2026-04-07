@@ -24,17 +24,11 @@ export function SuggestionCard({ suggestion }: SuggestionCardProps) {
     <Card variant="outlined" sx={{ mb: 1 }}>
       <CardContent sx={{ pb: 0 }}>
         <Box display="flex" alignItems="center" gap={1} mb={1}>
-          <Chip
-            label={suggestion.issue_detected}
-            color="warning"
-            size="small"
-          />
+          <Chip label={suggestion.issue_detected} color="warning" size="small" />
           <Typography variant="caption" color="text.secondary">
             Confidence: {Math.round(suggestion.confidence * 100)}%
           </Typography>
-          {suggestion.approved && (
-            <CheckCircleIcon color="success" fontSize="small" />
-          )}
+          {suggestion.approved && <CheckCircleIcon color="success" fontSize="small" />}
         </Box>
 
         <LinearProgress

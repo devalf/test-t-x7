@@ -74,9 +74,7 @@ async def _create_one_safe(
 ) -> ApiAdCampaign:
     """On failure, stores a 'failed' row and returns it — never raises."""
     try:
-        return await _create_one(
-            platform, campaign_type, campaign_name, payload, mock_module, plan
-        )
+        return await _create_one(platform, campaign_type, campaign_name, payload, mock_module, plan)
     except Exception:
         logger.exception("Failed to create %s campaign", platform)
         campaign_id = str(uuid.uuid4())

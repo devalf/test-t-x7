@@ -1,10 +1,4 @@
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Stack,
-} from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, Stack } from '@mui/material';
 
 import type { CampaignFilters } from '@/repository/campaigns';
 
@@ -21,9 +15,7 @@ export function Filters({ filters, onChange }: FiltersProps) {
         <Select
           label="Platform"
           value={filters.platform ?? ''}
-          onChange={(e) =>
-            onChange({ ...filters, platform: e.target.value || undefined })
-          }
+          onChange={(e) => onChange({ ...filters, platform: e.target.value || undefined })}
         >
           <MenuItem value="">All platforms</MenuItem>
           <MenuItem value="google">Google</MenuItem>
@@ -37,9 +29,7 @@ export function Filters({ filters, onChange }: FiltersProps) {
         <Select
           label="Campaign Type"
           value={filters.campaign_type ?? ''}
-          onChange={(e) =>
-            onChange({ ...filters, campaign_type: e.target.value || undefined })
-          }
+          onChange={(e) => onChange({ ...filters, campaign_type: e.target.value || undefined })}
         >
           <MenuItem value="">All types</MenuItem>
           <MenuItem value="pmax">Performance Max</MenuItem>

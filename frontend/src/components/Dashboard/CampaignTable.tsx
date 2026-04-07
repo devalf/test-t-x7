@@ -44,12 +44,10 @@ const TYPE_LABEL: Record<string, string> = {
   sponsored_brands: 'Sponsored Brands',
 };
 
-function aggregateMetrics(
-  campaignId: string,
-  metrics: ApiCampaignMetrics[],
-): AggregatedMetrics {
+function aggregateMetrics(campaignId: string, metrics: ApiCampaignMetrics[]): AggregatedMetrics {
   const rows = metrics.filter((m) => m.campaign_id === campaignId);
-  if (rows.length === 0) return { spend: 0, impressions: 0, clicks: 0, ctr: 0, conversions: 0, conversion_value: 0 };
+  if (rows.length === 0)
+    return { spend: 0, impressions: 0, clicks: 0, ctr: 0, conversions: 0, conversion_value: 0 };
 
   const spend = rows.reduce((s, r) => s + r.spend, 0);
   const impressions = rows.reduce((s, r) => s + r.impressions, 0);
@@ -99,7 +97,9 @@ export function CampaignTable({ campaigns, metrics }: CampaignTableProps) {
                   />
                 </TableCell>
                 <TableCell>{campaign.campaign_name}</TableCell>
-                <TableCell>{TYPE_LABEL[campaign.campaign_type] ?? campaign.campaign_type}</TableCell>
+                <TableCell>
+                  {TYPE_LABEL[campaign.campaign_type] ?? campaign.campaign_type}
+                </TableCell>
                 <TableCell>
                   <Chip
                     label={campaign.status}
@@ -115,7 +115,10 @@ export function CampaignTable({ campaigns, metrics }: CampaignTableProps) {
                 <TableCell align="right">{agg.clicks.toLocaleString()}</TableCell>
                 <TableCell align="right">{(agg.ctr * 100).toFixed(2)}%</TableCell>
                 <TableCell align="right">
-                  {agg.conversion_value.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}
+                  {agg.conversion_value.toLocaleString('en-US', {
+                    style: 'currency',
+                    currency: 'USD',
+                  })}
                 </TableCell>
               </TableRow>
             );

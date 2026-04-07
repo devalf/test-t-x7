@@ -185,9 +185,7 @@ async def generate_plan(request: ApiCreateCampaignRequest) -> ApiMediaPlan:
     # Step 4 + 5: Generate + validate with retry loop
     client = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
     system = _build_system_prompt(rag_constraints)
-    messages: list[dict] = [
-        {"role": "user", "content": _build_user_prompt(request, memory_hint)}
-    ]
+    messages: list[dict] = [{"role": "user", "content": _build_user_prompt(request, memory_hint)}]
 
     plan: ApiMediaPlan | None = None
     last_raw = ""

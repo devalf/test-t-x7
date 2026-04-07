@@ -120,12 +120,11 @@ def _run_rules(agg: dict[str, dict]) -> list[ApiOptimizationSuggestion]:
                 _build_suggestion(
                     campaign_id=campaign_id,
                     issue=(
-                        f"Spend imbalance: {platform} consuming"
-                        f" {spend/total_spend:.0%} of budget"
+                        f"Spend imbalance: {platform} consuming {spend / total_spend:.0%} of budget"
                     ),
                     action="Rebalance daily budgets across platforms to diversify reach.",
                     reasoning=(
-                        f"{platform.capitalize()} is consuming {spend/total_spend:.0%} of total "
+                        f"{platform.capitalize()} is consuming {spend / total_spend:.0%} of total "
                         f"spend (${spend:.2f} of ${total_spend:.2f}). Concentration risk may "
                         "limit overall campaign reach and increase CPC over time."
                     ),

@@ -43,8 +43,14 @@ export function InputForm({ onSubmit, isLoading }: InputFormProps) {
       objective,
       daily_budget: budget,
       product_categories: productCategories,
-      geo: geo.split(',').map((g) => g.trim()).filter(Boolean),
-      lang: lang.split(',').map((l) => l.trim()).filter(Boolean),
+      geo: geo
+        .split(',')
+        .map((g) => g.trim())
+        .filter(Boolean),
+      lang: lang
+        .split(',')
+        .map((l) => l.trim())
+        .filter(Boolean),
     });
   };
 

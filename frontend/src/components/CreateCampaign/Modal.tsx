@@ -78,12 +78,7 @@ export function CreateCampaignModal({ open, onClose }: CreateCampaignModalProps)
       <Divider />
 
       <DialogContent>
-        {step === 0 && (
-          <InputForm
-            onSubmit={handleGenerate}
-            isLoading={generatePlan.isPending}
-          />
-        )}
+        {step === 0 && <InputForm onSubmit={handleGenerate} isLoading={generatePlan.isPending} />}
         {step === 1 && plan && (
           <PlanPreview
             plan={plan}

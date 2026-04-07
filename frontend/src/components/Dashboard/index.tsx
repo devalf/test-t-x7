@@ -26,7 +26,11 @@ export function Dashboard() {
   const [filters, setFilters] = useState<CampaignFilters>({});
   const [modalOpen, setModalOpen] = useState(false);
 
-  const { data: campaigns = [], isLoading: loadingCampaigns, error: campaignsError } = useCampaigns(filters);
+  const {
+    data: campaigns = [],
+    isLoading: loadingCampaigns,
+    error: campaignsError,
+  } = useCampaigns(filters);
   const { data: metrics = [], isLoading: loadingMetrics, refetch: refetchMetrics } = useMetrics(7);
   const { data: suggestions = [], isLoading: loadingSuggestions } = useSuggestions();
 
@@ -45,11 +49,7 @@ export function Dashboard() {
               <RefreshIcon />
             </IconButton>
           </Tooltip>
-          <Button
-            variant="contained"
-            startIcon={<AddIcon />}
-            onClick={() => setModalOpen(true)}
-          >
+          <Button variant="contained" startIcon={<AddIcon />} onClick={() => setModalOpen(true)}>
             Create Campaigns
           </Button>
         </Stack>
